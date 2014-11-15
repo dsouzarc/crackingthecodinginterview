@@ -27,9 +27,26 @@ public class OneOne {
         return true;
     }
 
+    /** Better implementation, still O(N) but less memory */
+    public static boolean hasUniqueCharactersBest(final String word) { 
+        //Each letter from 0 to 127
+        final boolean[] letters = new boolean[128];
+
+        for(Character c : word.toCharArray()) { 
+            if(!letters[(int) c]) { 
+                letters[(int) c] = true;
+            }
+            else { 
+                return false;
+            }
+        }
+        return true;
+    }
+
+
     public static void main(String[] args) { 
         for(String s : args) { 
-            System.out.println(s + "\t" + hasUniqueCharacters(s));
+            System.out.println(s + "\t" + hasUniqueCharactersBest(s));
         }
     }
 }
