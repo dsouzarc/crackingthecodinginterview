@@ -1,5 +1,3 @@
-import java.util.LinkedList;
-
 /** 
  * 1.3 Cracking the Coding Interview
  * Removes duplicate characters in string without using
@@ -7,22 +5,34 @@ import java.util.LinkedList;
 
 public class OneThree { 
 
-    /** Removes duplicates in N * log(n) */
+    /** Removes duplicates in N * log(N) (worst case). */
     public static String removeRepeats(String original) { 
-        final LinkedList<Character> values = new LinkedList<Character>();
+        original = original.toLowerCase();
 
-        for(Character c : original.toCharArray()) { 
-            if(!values.contains(c)) { 
-                values.add(c);
-            }
-        }
-
+        //To hold nonduplicated letters
         final StringBuilder result = new StringBuilder("");
 
-        for(Character c : values) { 
-            result.append(c);
-        }
+        //Look through string
+        for(Character c : original.toCharArray()) { 
 
+            //If we have more than 26 letters, end (only 26 letters in alphabet)
+            if(result.length() >= 26) { 
+                return result.toString();
+            }
+
+            //If character is not in nonduplicated letters 
+            boolean isContained = false;
+            for(int i = 0; i < result.length() && !isContained; i++) { 
+                if(result.charAt(i) == c) { 
+                    isContained = true;
+                }
+            }
+
+            //Add it
+            if(!isContained) { 
+                result.append(c);
+            }
+        }
 
         return result.toString();
     }
