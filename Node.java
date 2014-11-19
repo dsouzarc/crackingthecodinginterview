@@ -17,4 +17,18 @@ public class Node {
     public Node (Object value) { 
         this.value = value;
     }
+
+    public Node (Object value, Node next) { 
+        this.value = value;
+        this.next = next;
+    }
+
+    @Override
+    public boolean equals(final Object other) { 
+        if(!(other instanceof Node)) { 
+            return false;
+        }
+        final Node otherNode = (Node) other;
+        return otherNode.value.toString().equals(this.value.toString());
+    }
 }
