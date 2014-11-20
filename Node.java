@@ -31,4 +31,9 @@ public class Node {
         final Node otherNode = (Node) other;
         return otherNode.value.toString().equals(this.value.toString());
     }
+
+    @Override
+    public String toString() { 
+        return this.value.toString() + " NEXT: " + next;
+    }
 }
