@@ -3,16 +3,31 @@ public class TwoTwo {
      * Cracking the Coding Interview 2.2 
      * Find the kth to last element of linkedlist */
 
-    /** Uses my custom implementation of a LinkedList */ 
-    public static int kthToLastValue(LinkedList original, int k) { 
-        return (int) original.element();
+    /** Uses my custom implementation of a LinkedList
+     * Unfortunately, I had to check the solution for this one
+     * because my previous method of iterating backwards
+     * did not work */
+    public static int kthToLastValue(Node customList, int k) { 
+        if(customList == null) { 
+            return 0;
+        }
+
+        int i = kthToLastValue(customList.next, k) + 1;
+
+        if(i == k) { 
+            System.out.println(customList.value);
+        }
+
+        return i;
     }
 
     public static void main(String[] ryan) { 
-        LinkedList ints = new LinkedList();
-        ints.add(2);
-        ints.add(3);
+        final CustomLinkedList ints = new CustomLinkedList();
 
-        System.out.println(kthToLastValue(ints, 2));
+        for(int i = 0; i < 5; i++) { 
+            ints.add(i);
+        }
+
+        kthToLastValue(ints.getHead(), 2);
     }
 }
