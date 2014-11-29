@@ -44,6 +44,19 @@ public class CustomLinkedList {
         return this.head;
     }
 
+    public String toString() { 
+        final StringBuilder holder = new StringBuilder("");
+
+        Node top = this.head;
+
+        while(top != null) { 
+            holder.append(top.value.toString() + " ");
+            top = top.next;
+        }
+
+        return holder.toString();
+    }
+
     public static void main(String[] ryan) { 
         final CustomLinkedList myList = new CustomLinkedList();
 
