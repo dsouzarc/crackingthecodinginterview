@@ -13,40 +13,33 @@ public class TwoFour {
         Node forLess = null;
         Node pointer = list.getHead();
 
-        int counter = 0;
         while(pointer != null) {
-           if(compareTo(pointer.value, value) >= 0) {
-            counter++;
-            if(forGreater == null) { 
-                forGreater = new Node(pointer.value);
+            if(compareTo(pointer.value, value) >= 0) {
+                if(forGreater == null) { 
+                    forGreater = new Node(pointer.value);
+                }
+                else { 
+                    forGreater = new Node(pointer.value, forGreater);
+                }
+                System.out.println("Here: " + pointer.value);
             }
             else { 
-                forGreater = new Node(pointer.value, forGreater);
+                if(forLess == null) { 
+                    forLess = new Node(pointer.value);
+                }
+                else { 
+                    forLess = new Node(pointer.value, forLess);
+                }
             }
-            System.out.println("Here: " + pointer.value);
-           }
-           else { 
-               if(forLess == null) { 
-                   forLess = new Node(pointer.value);
-               }
-               else { 
-                   forLess = new Node(pointer.value, forLess);
-               }
-           }
-           pointer = pointer.next;
+            pointer = pointer.next;
         }
-
-        System.out.println(counter + "\t" + (new CustomLinkedList(forGreater)).size() + "\t" + 
-                (new CustomLinkedList(forLess)).size() + "\tSizes");
 
         //If there are no smaller elements
         if(forLess == null) { 
             return new CustomLinkedList(forGreater);
         }
-        System.out.println(forGreater.toString());
 
         forLess.next = forGreater;
-
         return new CustomLinkedList(forLess);
     }
 
