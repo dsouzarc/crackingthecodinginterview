@@ -21,7 +21,6 @@ public class TwoFour {
                 else { 
                     forGreater = new Node(pointer.value, forGreater);
                 }
-                System.out.println("Here: " + pointer.value);
             }
             else { 
                 if(forLess == null) { 
