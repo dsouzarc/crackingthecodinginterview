@@ -13,14 +13,17 @@ public class TwoFour {
         Node forLess = null;
         Node pointer = list.getHead();
 
-        while(pointer != null && pointer.next != null) { 
+        int counter = 0;
+        while(pointer != null) {
            if(compareTo(pointer.value, value) >= 0) {
+            counter++;
             if(forGreater == null) { 
                 forGreater = new Node(pointer.value);
             }
             else { 
                 forGreater = new Node(pointer.value, forGreater);
             }
+            System.out.println("Here: " + pointer.value);
            }
            else { 
                if(forLess == null) { 
@@ -30,9 +33,17 @@ public class TwoFour {
                    forLess = new Node(pointer.value, forLess);
                }
            }
-           
            pointer = pointer.next;
         }
+
+        System.out.println(counter + "\t" + (new CustomLinkedList(forGreater)).size() + "\t" + 
+                (new CustomLinkedList(forLess)).size() + "\tSizes");
+
+        //If there are no smaller elements
+        if(forLess == null) { 
+            return new CustomLinkedList(forGreater);
+        }
+        System.out.println(forGreater.toString());
 
         forLess.next = forGreater;
 
@@ -40,7 +51,7 @@ public class TwoFour {
     }
 
     public static int compareTo(Object one, final Object two) { 
-        return one.toString().compareTo(two.toString());
+        return ((Integer) one) - ((Integer) two);
     }
 
     public static void main(String[] ryan) { 
