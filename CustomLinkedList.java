@@ -12,6 +12,17 @@ public class CustomLinkedList {
         size = 0;
     }
 
+    public CustomLinkedList(final Node val) { 
+        this.head = val;
+
+        Node temp = val;
+
+        while(temp != null && temp.next != null) { 
+            size++;
+            temp = temp.next;
+        }
+    }
+
     public void add(final Object value) { 
 
         if(head.value == null) { 
