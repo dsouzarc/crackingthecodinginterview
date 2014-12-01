@@ -2,7 +2,7 @@
  * Written by Ryan D'souza
  * Represents a single node */
 
-public class Node { 
+public class Node implements Comparable<Node> { 
     public Object value;
 
     //For single linkedlist
@@ -35,5 +35,10 @@ public class Node {
     @Override
     public String toString() { 
         return this.value.toString() + " NEXT: " + next;
+    }
+
+    @Override
+    public int compareTo(final Node other) { 
+        return this.value.toString().compareTo(other.value.toString());
     }
 }
