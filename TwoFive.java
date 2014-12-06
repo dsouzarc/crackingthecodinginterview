@@ -7,4 +7,24 @@
  * ex. (7 --> 1 --> 6) + (5 -> 9 -> 2) = 2 -> 1 -> 9 because 617 + 295 = 912 */
 
 public class TwoFive { 
+    /** Custom node class for implementation */
+    public static class Node { 
+        public final int value;
+        public Node previous;
+        public Node next;
+
+        public Node (final int value) { 
+            this.value = value;
+        }
+
+        public Node(final int value, final Node next) { 
+            this(value);
+            this.next = next;
+        }
+
+        public Node(final int value, final Node next, final Node previous) { 
+            this(value, next);
+            this.previous = previous;
+        }
+    }
 }
