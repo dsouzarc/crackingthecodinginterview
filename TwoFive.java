@@ -7,24 +7,23 @@
  * ex. (7 --> 1 --> 6) + (5 -> 9 -> 2) = 2 -> 1 -> 9 because 617 + 295 = 912 */
 
 public class TwoFive { 
-    /** Custom node class for implementation */
-    public static class Node { 
-        public final int value;
-        public Node previous;
-        public Node next;
+    
 
-        public Node (final int value) { 
-            this.value = value;
+    //For testing
+    public static void main(String[] ryan) { 
+        final CustomLinkedList firstNum = new CustomLinkedList();
+
+        final String first = ryan[0];
+
+        for(Character c : first.toCharArray()) { 
+            firstNum.add(Character.getNumericValue(c));
         }
 
-        public Node(final int value, final Node next) { 
-            this(value);
-            this.next = next;
-        }
+        Node head = firstNum.getHead();
 
-        public Node(final int value, final Node next, final Node previous) { 
-            this(value, next);
-            this.previous = previous;
+        while(head != null) { 
+            System.out.println(head.value);
+            head = head.next;
         }
     }
 }
