@@ -5,6 +5,7 @@
 
 public class CustomLinkedList { 
     private Node head;
+    private Node previous;
     private int size;
 
     public CustomLinkedList() { 
@@ -41,6 +42,7 @@ public class CustomLinkedList {
 
             //Add newest node to end of list
             toEnd.next = nodeVal;
+            nodeVal.previous = toEnd;
         }
         size++;
     }
@@ -53,6 +55,10 @@ public class CustomLinkedList {
 
     public Node getHead() { 
         return this.head;
+    }
+
+    public Node getPrevious() { 
+        return this.previous;
     }
 
     public String toString() { 
