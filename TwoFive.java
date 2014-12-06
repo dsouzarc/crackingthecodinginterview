@@ -14,6 +14,14 @@ public class TwoFive {
         Node firstNode = first.getHead();
         Node secondNode = second.getHead();
 
+        //Get to the last node
+        while(firstNode != null && firstNode.next != null) { 
+            firstNode = firstNode.next;
+        }
+        while(secondNode != null && secondNode.next != null) { 
+            secondNode = secondNode.next;
+        }
+
         return result;
     }
         
