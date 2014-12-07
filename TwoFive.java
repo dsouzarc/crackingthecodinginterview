@@ -22,6 +22,28 @@ public class TwoFive {
             secondNode = secondNode.next;
         }
 
+        if(second.size() >= first.size() || firstNode != null) { 
+            int carryOver = 0;
+
+            while(secondNode != null && secondNode.previous != null) { 
+                if(firstNode != null && firstNode.value != null) { 
+                    final Integer sum = (Integer) secondNode.value + (Integer) firstNode.value + carryOver;
+                    carryOver = 0;
+                    if(sum >= 10) { 
+                        result.add(sum - 10);
+                        carryOver = 1;
+                    }
+                    else { 
+                        result.add(sum);
+                    }
+                }
+
+                secondNode = secondNode.previous;
+                firstNode = firstNode.previous;
+            }
+        }
+
+
         return result;
     }
         
@@ -41,5 +63,11 @@ public class TwoFive {
         }
 
         final CustomLinkedList sum = add(firstNum, secondNum);
+        Node result = sum.getHead();
+
+        while(result != null) { 
+            System.out.println(result.value);
+            result = result.next;
+        }
     }
 }
