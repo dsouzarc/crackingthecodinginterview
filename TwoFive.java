@@ -22,9 +22,8 @@ public class TwoFive {
             secondNode = secondNode.next;
         }
 
+        int carryOver = 0;
         if(second.size() >= first.size() || firstNode != null) { 
-            int carryOver = 0;
-
             while(secondNode != null) { 
                 if(firstNode != null && firstNode.value != null) { 
                     final Integer sum = (Integer) secondNode.value + (Integer) firstNode.value + carryOver;
@@ -42,6 +41,11 @@ public class TwoFive {
                 firstNode = firstNode.previous;
             }
         }
+
+        if(carryOver > 0) { 
+            result.add(carryOver);
+        }
+
         return result;
     }
         
@@ -62,10 +66,11 @@ public class TwoFive {
 
         final CustomLinkedList sum = add(firstNum, secondNum);
         Node result = sum.getHead();
-
+        System.out.println("SUM\n");
         while(result != null) { 
-            System.out.println(result.value);
+            System.out.print(result.value);
             result = result.next;
         }
+        System.out.println();
     }
 }
