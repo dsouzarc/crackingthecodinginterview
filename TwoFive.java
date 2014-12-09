@@ -4,7 +4,13 @@
  * Two numbers are stored in a linkedlist in reverse order
  * so that ones digit is at head of list.
  * Add two #s and return sum as linkedlist
- * ex. (7 --> 1 --> 6) + (5 -> 9 -> 2) = 2 -> 1 -> 9 because 617 + 295 = 912 */
+ * ex. (7 --> 1 --> 6) + (5 -> 9 -> 2) = 2 -> 1 -> 9 because 617 + 295 = 912 
+ *
+ * Current Shortcoming: The numbers that are added have to be in the correct digit
+ * (1s digit at end, tens second from end, hundreds third from end, etc.
+ * This shortcoming will be fixed soon when I add a reverse feature to CustomLinkedList.java
+ * and add various improvements 
+ * */
 
 public class TwoFive { 
 
