@@ -36,9 +36,13 @@ public class TwoFive {
                         result.add(sum);
                     }
                 }
+                else { 
+                    result.add((Integer) secondNode.value + carryOver);
+                    carryOver = 0;
+                }
 
                 secondNode = secondNode.previous;
-                firstNode = firstNode.previous;
+                firstNode = firstNode == null ? null : firstNode.previous;
             }
         }
 
