@@ -25,7 +25,7 @@ public class TwoFive {
         if(second.size() >= first.size() || firstNode != null) { 
             int carryOver = 0;
 
-            while(secondNode.previous != null) { 
+            while(secondNode != null) { 
                 if(firstNode != null && firstNode.value != null) { 
                     final Integer sum = (Integer) secondNode.value + (Integer) firstNode.value + carryOver;
                     carryOver = 0;
@@ -42,8 +42,6 @@ public class TwoFive {
                 firstNode = firstNode.previous;
             }
         }
-
-
         return result;
     }
         
