@@ -31,20 +31,20 @@ public class CustomLinkedList {
         this.size++;
 
         //If there is no value for head
-        if(this.head.value == null || this.head.next == null) { 
+        if(this.head.value == null) {
 
             //Set the head's current value
             this.head.value = value;
 
             //Set the next element to the last one
-            this.lastElement = new Node(null);
+            this.lastElement = new Node();
             this.head.next = this.lastElement;
         }
 
         else { 
-            final Node newestElement = new Node(value);
-            this.lastElement.next = newestElement;
-            this.lastElement = newestElement;
+            this.lastElement.value = value;
+            this.lastElement.next = new Node();
+            this.lastElement = this.lastElement.next;
         }
     }
 
@@ -67,8 +67,10 @@ public class CustomLinkedList {
 
         Node top = this.head;
 
-        while(top != null) { 
-            holder.append(top.value.toString() + " ");
+        while(top != null) {
+            if(top.value != null) {
+                holder.append(top.value.toString() + " ");
+            }
             top = top.next;
         }
 
