@@ -4,9 +4,8 @@
  * to do problems requiring LinkedLists on */
 
 public class CustomLinkedList { 
-    private Node head;
-    private Node previous;
-    private Node last;
+    private final Node head;
+    private Node lastElement;
     private int size;
 
     public CustomLinkedList() { 
@@ -14,40 +13,25 @@ public class CustomLinkedList {
         size = 0;
     }
 
-    public CustomLinkedList(final Node val) { 
-        this.head = val;
-
-        Node temp = val;
-
-        while(temp != null && temp.next != null) { 
-            size++;
-            temp = temp.next;
-        }
-    }
-
     public void add(final Object value) { 
+        this.size++;
 
-        //Just add the node
-        if(head.value == null) { 
+        //If there is no value for head
+        if(this.head.value == null || this.head.next == null) { 
 
-            this.last = head;
+            //Set the head's current value
+            this.head.value = value;
+
+            //Set the next element to the last one
+            this.lastElement = new Node(null);
+            this.head.next = this.lastElement;
         }
 
         else { 
-            final Node nodeVal = new Node(value);
-        
-            //Node to get to last node
-            Node toEnd = this.head;
-
-            while(toEnd.next != null) { 
-                toEnd = toEnd.next;
-            }
-
-            //Add newest node to end of list
-            toEnd.next = nodeVal;
-            nodeVal.previous = toEnd;
+            final Node newestElement = new Node(value);
+            this.lastElement.next = newestElement;
+            this.lastElemement = newestElement;
         }
-        size++;
     }
 
     /** More methods will be implemented when the need comes */
@@ -60,8 +44,8 @@ public class CustomLinkedList {
         return this.head;
     }
 
-    public Node getPrevious() { 
-        return this.previous;
+    public Node getLast() { 
+        return this.lastElement;
     }
 
     public String toString() { 
