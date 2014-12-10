@@ -6,6 +6,7 @@
 public class CustomLinkedList { 
     private Node head;
     private Node previous;
+    private Node last;
     private int size;
 
     public CustomLinkedList() { 
@@ -26,8 +27,10 @@ public class CustomLinkedList {
 
     public void add(final Object value) { 
 
+        //Just add the node
         if(head.value == null) { 
-            head.value = value;
+
+            this.last = head;
         }
 
         else { 
