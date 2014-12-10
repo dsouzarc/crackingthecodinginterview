@@ -8,11 +8,13 @@ public class CustomLinkedList {
     private Node lastElement;
     private int size;
 
+    /** Default constructor */
     public CustomLinkedList() { 
         this.head = new Node(null);
         size = 0;
     }
 
+    /** Constructor from existing node */
     public CustomLinkedList(final Node first) { 
         this.head = first;
 
@@ -27,6 +29,7 @@ public class CustomLinkedList {
         this.lastElement = temp;
     }   
 
+    /** Add a node at the end */
     public void add(final Object value) { 
         this.size++;
 
@@ -50,18 +53,22 @@ public class CustomLinkedList {
 
     /** More methods will be implemented when the need comes */
 
+    /** Get the total number of elements*/
     public int size() { 
         return this.size;
     }
 
+    /** Get the first node */
     public Node getHead() { 
         return this.head;
     }
 
+    /** Get the last node */
     public Node getLast() { 
         return this.lastElement;
     }
-
+    
+    /** To String representation of each item in list*/
     public String toString() { 
         final StringBuilder holder = new StringBuilder("");
 
@@ -90,5 +97,7 @@ public class CustomLinkedList {
             System.out.println("Stored Value\t" + head.value);
             head = head.next;
         }
+
+        System.out.println("SIZE " + myList.size());
     }
 }
