@@ -13,6 +13,20 @@ public class CustomLinkedList {
         size = 0;
     }
 
+    public CustomLinkedList(final Node first) { 
+        this.head = first;
+
+        Node temp = first;
+        this.size = 1;
+
+        while(temp != null && temp.next != null) { 
+            temp = temp.next;
+            this.size++;
+        }
+
+        this.lastElement = temp;
+    }   
+
     public void add(final Object value) { 
         this.size++;
 
