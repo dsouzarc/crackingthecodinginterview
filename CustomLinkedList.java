@@ -29,6 +29,11 @@ public class CustomLinkedList {
         this.lastElement = temp;
     }   
 
+    /** Constructor from existing list */
+    public CustomLinkedList(final CustomLinkedList other) { 
+        this(other.getHead());
+    }
+
     /** Add a node at the end */
     public void add(final Object value) { 
         this.size++;
