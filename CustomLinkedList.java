@@ -30,7 +30,7 @@ public class CustomLinkedList {
         else { 
             final Node newestElement = new Node(value);
             this.lastElement.next = newestElement;
-            this.lastElemement = newestElement;
+            this.lastElement = newestElement;
         }
     }
 
