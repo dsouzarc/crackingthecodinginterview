@@ -17,8 +17,9 @@ public class CustomStack {
             this.item.value = object;
         }
         else { 
-            this.item.next = new Node(object);
-            this.item.next.previous = this.item.next;
+            final Node newestItem = new Node(object);
+            this.item.next = newestItem;
+            newestItem.previous = this.item;
             this.item = this.item.next;
         }
     }
@@ -31,7 +32,7 @@ public class CustomStack {
         size--;
 
         Object toReturn = this.item.value;
-        item = item.previous.previous;
+        item = item.previous;
 
         return toReturn;
     }
