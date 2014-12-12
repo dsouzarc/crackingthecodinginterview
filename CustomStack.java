@@ -1,0 +1,59 @@
+/** 
+ * Written by Ryan D'souza
+ * Custom Stack data structure written for Cracking the Coding Interview Practice */
+
+public class CustomStack { 
+    private int size;
+    private Node item;
+
+    public CustomStack() { 
+        this.size = 0;
+        this.item = new Node();
+    }
+
+    public void add(final Object object) { 
+        size++;
+        if(this.item.value == null) { 
+            this.item.value = object;
+        }
+        else { 
+            this.item.next = new Node(object);
+            this.item.next.previous = this.item.next;
+            this.item = this.item.next;
+        }
+    }
+
+    public Object pop() { 
+        if(size == 0 || this.item == null) { 
+            return null;
+        }
+
+        size--;
+
+        Object toReturn = this.item.value;
+        item = item.previous.previous;
+
+        return toReturn;
+    }
+
+
+    public int getSize() { 
+        return this.size;
+    }
+
+    public static void main(String[] ryan) { 
+        final CustomStack names = new CustomStack();
+
+        for(String r : ryan) { 
+            names.add(r);
+        }
+
+        Object val = names.pop();
+
+        while(val != null) {
+            System.out.println(val.toString());
+            val = names.pop();
+        }
+    }
+}
+
