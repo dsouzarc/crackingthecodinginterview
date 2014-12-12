@@ -25,14 +25,14 @@ public class CustomStack {
     }
 
     public Object pop() { 
-        if(size == 0 || this.item == null) { 
+        if(this.size == 0 || this.item == null) { 
             return null;
         }
 
-        size--;
+        this.size--;
 
-        Object toReturn = this.item.value;
-        item = item.previous;
+        final Object toReturn = this.item.value;
+        this.item = this.item.previous;
 
         return toReturn;
     }
