@@ -8,7 +8,7 @@ public class CustomQueue {
     private int size;
 
     public CustomQueue() { 
-        this.size == 0;
+        this.size = 0;
     }
 
     public void add(final Object value) { 
