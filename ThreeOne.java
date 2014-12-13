@@ -51,4 +51,48 @@ public class ThreeOne {
                 }
             break;
 
+            case 3:
+                if(stack3 < STACK_SIZE * 3) { 
+                    values[stack3] = value;
+                    stack3++;
+                }
+                else { 
+                    throw new UnsupportedOperationException();
+                }
+            break;
 
+            default: 
+                throw new UnsupportedOperationException();
+        }
+    }
+
+    public Object pop(final int stackNum) { 
+        Object toReturn = null;
+
+        switch(stackNum) { 
+            case 1:
+                if(stack1 != 0) {
+                    toReturn = values[stack1];
+                    stack1--;
+                }
+             break;
+            case 2:
+                if(stack2 != STACK_SIZE) { 
+                    toReturn = values[stack2];
+                    stack2--;
+                }
+            break;
+            case 3:
+                if(stack3 != STACK_SIZE * 2) { 
+                    toReturn = values[stack3];
+                    stack3--;
+                }
+            break;
+            default: 
+                toReturn = null;
+            break;
+        }
+
+        return toReturn;
+    }
+}
