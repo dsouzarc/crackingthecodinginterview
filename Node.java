@@ -34,7 +34,7 @@ public class Node implements Comparable<Node> {
 
     @Override
     public String toString() { 
-        return this.value.toString() + " NEXT: " + next;
+        return this.value == null ? "null object value" : this.value.toString() + " NEXT: " + next;
     }
 
     @Override

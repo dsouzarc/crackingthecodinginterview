@@ -12,8 +12,6 @@ public class CustomQueue {
     }
 
     public void add(final Object value) { 
-        this.size++;
-
         if(this.firstItem == null || this.firstItem.value == null || this.size == 0) { 
             this.firstItem = new Node(value);
             this.lastItem = new Node();
@@ -24,17 +22,20 @@ public class CustomQueue {
             final Node newestVal = new Node(value);
             this.lastItem.next = newestVal;
             this.lastItem = this.lastItem.next;
+            System.out.println("HERE " + this.lastItem.value + " " + this.firstItem.value + this.firstItem.next == null ? "nul" : this.firstItem.next.value);
         }
+
+        this.size++;
     }
 
     public Object dequeue() { 
-        if(this.size == 0 || firstItem == null || lastItem == null) { 
+        if(this.size == 0) {
             return null;
         }
 
         this.size--;
         final Object value = this.firstItem.value;
-        firstItem = this.firstItem.next;
+        this.firstItem = this.firstItem.next;
 
         return value;
     }
