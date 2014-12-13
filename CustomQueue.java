@@ -19,11 +19,10 @@ public class CustomQueue {
         }
 
         else { 
-            final Node newestVal = new Node(value);
-            this.lastItem.next = newestVal;
+            this.lastItem.value = value;
+            this.lastItem.next = new Node();
             this.lastItem = this.lastItem.next;
         }
-
         this.size++;
     }
 
