@@ -13,6 +13,9 @@ public class CustomStack {
 
     public void add(final Object object) { 
         size++;
+        if(this.item == null) { 
+            this.item = new Node(object);
+        }
         if(this.item.value == null) { 
             this.item.value = object;
         }

@@ -38,6 +38,7 @@ public class ThreeFive {
         final ThreeFive obj = new ThreeFive();
 
         for(String r : ryan) { 
+            System.out.println("ITEM: " + r);
             obj.add(r);
         }
     }
