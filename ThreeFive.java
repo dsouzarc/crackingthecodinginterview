@@ -17,17 +17,18 @@ public class ThreeFive {
 
     public void add(final Object toAdd) { 
         //Add it to the newest stack
-        newestItems.add(toAdd);
+        //newestItems.add(toAdd);
 
-        //Add all the items from the old stack to the new stack
-        while(this.oldestItems.getSize() != 0) { 
+        while(this.oldestItems.getSize() != 0) {
             this.newestItems.add(this.oldestItems.pop());
         }
 
-        //Add everything back to the new stack so it's in queue order
+        this.newestItems.add(toAdd);
+
         while(this.newestItems.getSize() != 0) { 
             this.oldestItems.add(this.newestItems.pop());
         }
+
     }
 
     public Object pop() { 
@@ -38,8 +39,12 @@ public class ThreeFive {
         final ThreeFive obj = new ThreeFive();
 
         for(String r : ryan) { 
-            System.out.println("ITEM: " + r);
             obj.add(r);
+        }
+
+        System.out.println("Dequeueing");
+        while(obj.size() != 0) { 
+            System.out.println(obj.pop().toString());
         }
     }
 }
