@@ -21,7 +21,7 @@ public class ThreeThree {
     }
 
     public void add(final Object item) { 
-        if(this.stack.size == MAX_SIZE) { 
+        if(this.stack.getSize() == MAX_SIZE) { 
             stack = new CustomStack();
             stack.add(item);
             masterStack.add(stack);
@@ -33,9 +33,9 @@ public class ThreeThree {
     }
 
     public Object pop() { 
-        if(this.stack.size == 0) { 
+        if(this.stack.getSize() == 0) { 
             this.masterStack.pop();
-            this.stack = this.masterStack.peek();
+            this.stack = (CustomStack) this.masterStack.peek();
             return this.stack.pop();
         }
         else { 
