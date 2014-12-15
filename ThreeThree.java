@@ -17,27 +17,43 @@ public class ThreeThree {
         this.masterStack = new CustomStack();
         this.stack = new CustomStack();
 
+        //Add this stack to our master stack
         this.masterStack.add(this.stack);
     }
 
     public void add(final Object item) { 
-        if(this.stack.getSize() == MAX_SIZE) { 
+
+        //If current stack is at max height
+        if(this.stack.getSize() == MAX_SIZE) {
+
+            //Make a new stack and add the item to it
             stack = new CustomStack();
             stack.add(item);
+
+            //Add it to the master stack
             masterStack.add(stack);
         }
 
+        //If current stack is not at max height
         else { 
             this.stack.add(item);
         }
     }
 
     public Object pop() { 
+
+        //If our stack has no more items
         if(this.stack.getSize() == 0) { 
+
+            //Remove it from master stack
             this.masterStack.pop();
+
+            //Get the next stack and return its value
             this.stack = (CustomStack) this.masterStack.peek();
             return this.stack.pop();
         }
+
+        //If our stack has more values
         else { 
             return this.stack.pop();
         }
