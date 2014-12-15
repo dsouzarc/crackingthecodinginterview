@@ -37,6 +37,13 @@ public class CustomStack {
         return toReturn;
     }
 
+    public Object peek() { 
+        if(this.size == 0 || this.item == null) { 
+            return null;
+        }
+
+        return this.item.value;
+    }
 
     public int getSize() { 
         return this.size;
