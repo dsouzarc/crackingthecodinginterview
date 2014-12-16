@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /** 
  * Written by Ryan D'souza
  * Cracking the Coding Interview 3.6
@@ -26,5 +28,21 @@ public class ThreeSix {
 
     public boolean isEmpty() { 
         return this.theStack.getSize() == 0;
+    }
+
+    public void sort() { 
+    }
+
+
+    public static void main(String[] ryan) { 
+        final Random generator = new Random();
+        final ThreeSix obj = new ThreeSix();
+
+        for(int i = 0; i < 10; i++) { 
+            final int number = generator.nextInt(100);
+            obj.push(i);
+            System.out.println("Adding: " + number);
+        }
+        obj.sort();
     }
 }
