@@ -53,7 +53,7 @@ public class ThreeSix {
                 }
 
                 //If the numbers are all smaller than this, add it to thestack for temp safekeeping
-                else if(stackValue > ((Integer) temp.peek())) { 
+                else if(stackValue < ((Integer) temp.peek())) { 
                     theStack.add(temp.pop());
                 }
 
@@ -72,9 +72,7 @@ public class ThreeSix {
         System.out.println("# of iterations: " + numIterations);
 
         //And add all of the items which will now be in ascending order
-        while(!temp.isEmpty()) { 
-            this.theStack.add(temp.pop());
-        }
+        theStack.addAll(temp);
     }
 
     public static void main(String[] ryan) { 
