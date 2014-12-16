@@ -52,6 +52,10 @@ public class CustomStack {
         return this.size;
     }
 
+    public boolean isEmpty() { 
+        return this.size == 0;
+    }
+
     public void removeAll() { 
         this.size = 0;
         this.item = null;
