@@ -32,28 +32,53 @@ public class ThreeSix {
 
     public void sort() { 
         final CustomStack temp = new CustomStack();
-        final int size = theStack.getSize();
+        final int numElements = theStack.getSize();
 
-        for(int i = 0; i < size; i++) { 
-            Integer largestVal = Integer.MIN_VALUE;
+        boolean toContinue = true;
+        int num = 0;
 
-            while(theStack.getSize() != 0) {
-                final Integer val = (Integer) theStack.pop();
+        while(toContinue) { 
+            if(num == numElements) { 
+                toContinue = false;
+                return;
+            }
 
-                if(val > largestVal) { 
-                    largestVal = val;
+            //Don't consider the largest elements
+            for(int i = 0; i < num; i++) { 
+                temp.add(theStack.pop());
+            }
+
+            //Find the largest number
+            Integer largestNumber = Integer.MIN_VALUE;
+
+            while(theStack.getSize() != 0) { 
+                final Integer value = (Integer) theStack.pop();
+
+                if(value > largestNumber) { 
+                    largestNumber = value;
                 }
                 else { 
-                    temp.add(val);
+                    temp.add(value);
                 }
             }
 
+            //Begin adding the elements back
+            for(int i = 0; i < numElements - num; i++) { 
+                if(temp.peek() != null) { 
+                    theStack.add(temp.pop());
+                }
+            }
+
+            //Pause to add the next biggest element
+            theStack.add(largestNumber);
+
+            //Add the other numbers back
             while(temp.getSize() != 0) { 
                 theStack.add(temp.pop());
             }
-            theStack.add(largestVal);
+
+            num++;
         }
-        
     }
 
 
@@ -63,14 +88,14 @@ public class ThreeSix {
 
         for(int i = 0; i < 10; i++) { 
             final int number = generator.nextInt(100);
-            obj.push(i);
+            obj.push(number);
             System.out.println("Adding: " + number);
         }
         obj.sort();
 
         System.out.println("\nAfter sorting\n");
         while(!obj.isEmpty()) { 
-            System.out.prntln(theObj.pop());
+            System.out.println(obj.pop());
         }
     }
 }
