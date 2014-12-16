@@ -17,10 +17,12 @@
 
 public class ThreeFive { 
     private final CustomStack oldestItems, newestItems;
+    private boolean needsRestructuring;
 
     public ThreeFive() { 
         this.oldestItems = new CustomStack();
         this.newestItems = new CustomStack();
+        this.needsRestructuring = false;
     }
 
     public void add(final Object toAdd) { 
@@ -32,16 +34,35 @@ public class ThreeFive {
 
         //Add the newest item
         this.newestItems.add(toAdd);
+
+        //We need restructuring since we just added an item
+        this.needsRestructuring = true;
     }
 
-    public Object pop() { 
+    private void restructure() { 
 
         //Add items back to old stack, putting order in FIFO form
         while(this.newestItems.getSize() != 0) { 
             this.oldestItems.add(this.newestItems.pop());
         }
 
+        needsRestructuring = false;
+    }
+
+    public Object pop() { 
+        if(needsRestructuring) { 
+            restructure();
+        }
+
         return this.oldestItems.pop();
+    }
+
+    public Object peek() { 
+        if(needsRestructuring) { 
+            restructure();
+        }
+
+        return this.oldestItems.peek();
     }
 
     public int size() { 
@@ -53,6 +74,14 @@ public class ThreeFive {
 
         for(String r : ryan) { 
             obj.add(r);
+        }
+
+        //For testing
+        System.out.println("First element: " + obj.peek());
+
+        //Add some more elements for testing
+        for(int i = 0; i < 9; i++) { 
+            obj.add("Test element #: " + i);
         }
 
         System.out.println("Dequeueing");
