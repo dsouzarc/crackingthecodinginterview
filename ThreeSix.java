@@ -34,6 +34,8 @@ public class ThreeSix {
         final CustomStack temp = new CustomStack();
         final int numElements = theStack.getSize();
 
+        int numIterations = 0;
+
         //Insertion sort like sorting algorithm
         while(!theStack.isEmpty()) {
 
@@ -63,17 +65,17 @@ public class ThreeSix {
 
             //Add the number
            temp.add(stackValue);
+
+           numIterations++;
         }
 
-        //Clear the current stack which is already empty
-        this.theStack.removeAll();
+        System.out.println("# of iterations: " + numIterations);
 
         //And add all of the items which will now be in ascending order
         while(!temp.isEmpty()) { 
             this.theStack.add(temp.pop());
         }
     }
-
 
     public static void main(String[] ryan) { 
         final Random generator = new Random();
