@@ -34,50 +34,32 @@ public class ThreeSix {
         final CustomStack temp = new CustomStack();
         final int numElements = theStack.getSize();
 
-        boolean toContinue = true;
-        int num = 0;
+        //Insertion sort like
+        while(!theStack.isEmpty()) { 
+            final Integer stackValue = (Integer) theStack.pop();
 
-        while(toContinue) { 
-            if(num == numElements) { 
-                toContinue = false;
-                return;
-            }
-
-            //Don't consider the largest elements
-            for(int i = 0; i < num; i++) { 
-                temp.add(theStack.pop());
-            }
-
-            //Find the largest number
-            Integer largestNumber = Integer.MIN_VALUE;
-
-            while(theStack.getSize() != 0) { 
-                final Integer value = (Integer) theStack.pop();
-
-                if(value > largestNumber) { 
-                    largestNumber = value;
+            boolean tt = true;
+            //Look through temp array 
+            while(tt) { 
+                if(temp.peek() == null) { 
+                    tt = false;
                 }
-                else { 
-                    temp.add(value);
-                }
-            }
-
-            //Begin adding the elements back
-            for(int i = 0; i < numElements - num; i++) { 
-                if(temp.peek() != null) { 
+                else if(stackValue > ((Integer) temp.peek())) { 
                     theStack.add(temp.pop());
                 }
+                else { 
+                    tt = false;
+                }
             }
 
-            //Pause to add the next biggest element
-            theStack.add(largestNumber);
+            //Add it
+           temp.add(stackValue);
+        }
 
-            //Add the other numbers back
-            while(temp.getSize() != 0) { 
-                theStack.add(temp.pop());
-            }
+        this.theStack.removeAll();
 
-            num++;
+        while(!temp.isEmpty()) { 
+            this.theStack.add(temp.pop());
         }
     }
 
