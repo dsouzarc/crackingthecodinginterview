@@ -40,6 +40,35 @@ public class CustomStack {
         return toReturn;
     }
 
+    public Node getCurrent() { 
+        return this.item;
+    }
+
+    //Adds items from other list to this one
+    public void addAll(final CustomStack other) { 
+        final Node endOfStack = other.getCurrent();
+
+        if(endOfStack == null || other.getSize() == 0) { 
+            return;
+        }
+
+        Node temp = other.getCurrent();
+
+        //Get to head of stack
+        while(temp != null) { 
+            temp = temp.previous;
+        }
+
+        //Link top of this stack to end of bottom stack
+        this.item.next = temp;
+        temp.previous = this.item;
+
+        //Link end of this stack to beginning of other stack
+        this.item = endOfStack;
+
+        this.size += other.getSize();
+    }
+
     public Object peek() { 
         if(this.size == 0 || this.item == null) { 
             return null;
