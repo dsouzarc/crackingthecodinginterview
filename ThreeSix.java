@@ -31,6 +31,29 @@ public class ThreeSix {
     }
 
     public void sort() { 
+        final CustomStack temp = new CustomStack();
+        final int size = theStack.getSize();
+
+        for(int i = 0; i < size; i++) { 
+            Integer largestVal = Integer.MIN_VALUE;
+
+            while(theStack.getSize() != 0) {
+                final Integer val = (Integer) theStack.pop();
+
+                if(val > largestVal) { 
+                    largestVal = val;
+                }
+                else { 
+                    temp.add(val);
+                }
+            }
+
+            while(temp.getSize() != 0) { 
+                theStack.add(temp.pop());
+            }
+            theStack.add(largestVal);
+        }
+        
     }
 
 
