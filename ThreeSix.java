@@ -8,4 +8,23 @@
 public class ThreeSix { 
     private final CustomStack theStack;
 
-    public ThreeSix
+    public ThreeSix() { 
+        this.theStack = new CustomStack();
+    }
+
+    public void push(final Object obj) { 
+        this.theStack.add(obj);
+    }
+
+    public Object pop() { 
+        return this.theStack.pop();
+    }
+
+    public Object peek() { 
+        return this.theStack.peek();
+    }
+
+    public boolean isEmpty() { 
+        return this.theStack.getSize() == 0;
+    }
+}
