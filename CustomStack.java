@@ -45,25 +45,36 @@ public class CustomStack {
     }
 
     //Adds items from other list to this one
-    public void addAll(final CustomStack other) { 
-        final Node endOfStack = other.getCurrent();
+    public void addAll(final CustomStack other) {
 
-        if(endOfStack == null || other.getSize() == 0) { 
+        //Some pre-conditions
+        if(other == null || other.getSize() == 0) { 
             return;
         }
 
-        Node temp = other.getCurrent();
+        final Node endOfStack = other.getCurrent();
+        if(endOfStack == null) { 
+            return;
+        }
 
         //Get to head of stack
-        while(temp != null) { 
-            temp = temp.previous;
+        Node beginningOfStack = other.getCurrent();
+        while(beginningOfStack != null) { 
+            beginningOfStack = beginningOfStack.previous;
+        }
+
+        //If this stack is empty
+        if(this.size == 0 || this.item == null || this.item.previous == null) {
+            this.item = endOfStack;
+            this.size = other.getSize();
+            return;
         }
 
         //Link top of this stack to end of bottom stack
-        this.item.next = temp;
-        temp.previous = this.item;
+        this.item.next = beginningOfStack;
+        beginningOfStack.previous = this.item;
 
-        //Link end of this stack to beginning of other stack
+        //Because the stacks have been merged, we should go to end of stack
         this.item = endOfStack;
 
         this.size += other.getSize();
