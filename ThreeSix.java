@@ -67,5 +67,10 @@ public class ThreeSix {
             System.out.println("Adding: " + number);
         }
         obj.sort();
+
+        System.out.println("\nAfter sorting\n");
+        while(!obj.isEmpty()) { 
+            System.out.prntln(theObj.pop());
+        }
     }
 }
