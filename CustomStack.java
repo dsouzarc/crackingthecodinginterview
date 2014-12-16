@@ -52,6 +52,11 @@ public class CustomStack {
         return this.size;
     }
 
+    public void removeAll() { 
+        this.size = 0;
+        this.item = null;
+    }
+
     public static void main(String[] ryan) { 
         final CustomStack names = new CustomStack();
 
