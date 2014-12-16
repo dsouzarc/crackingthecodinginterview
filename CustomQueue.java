@@ -26,6 +26,10 @@ public class CustomQueue {
         this.size++;
     }
 
+    public Object peek() { 
+        return this.firstItem.value;
+    }
+
     public Object dequeue() { 
         if(this.size == 0) {
             return null;
