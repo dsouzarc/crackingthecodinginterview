@@ -34,30 +34,41 @@ public class ThreeSix {
         final CustomStack temp = new CustomStack();
         final int numElements = theStack.getSize();
 
-        //Insertion sort like
-        while(!theStack.isEmpty()) { 
+        //Insertion sort like sorting algorithm
+        while(!theStack.isEmpty()) {
+
+            //The current value
             final Integer stackValue = (Integer) theStack.pop();
 
-            boolean tt = true;
-            //Look through temp array 
-            while(tt) { 
+            boolean toContinue = true;
+
+            //Look through the temp stack to find the correct place to insert this number
+            while(toContinue) { 
+
+                //Stop if the next item is null
                 if(temp.peek() == null) { 
-                    tt = false;
+                    toContinue = false;
                 }
+
+                //If the numbers are all smaller than this, add it to thestack for temp safekeeping
                 else if(stackValue > ((Integer) temp.peek())) { 
                     theStack.add(temp.pop());
                 }
+
+                //If we get to the spot where the numbers are now greater than the current value
                 else { 
-                    tt = false;
+                    toContinue = false;
                 }
             }
 
-            //Add it
+            //Add the number
            temp.add(stackValue);
         }
 
+        //Clear the current stack which is already empty
         this.theStack.removeAll();
 
+        //And add all of the items which will now be in ascending order
         while(!temp.isEmpty()) { 
             this.theStack.add(temp.pop());
         }
