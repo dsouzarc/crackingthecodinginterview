@@ -17,41 +17,32 @@
 
 public class ThreeFive { 
     private final CustomStack oldestItems, newestItems;
-    private boolean needsRestructure;
 
     public ThreeFive() { 
         this.oldestItems = new CustomStack();
         this.newestItems = new CustomStack();
-        this.needsRestructure = false;
     }
 
     public void add(final Object toAdd) { 
 
+        //Add all the items from the old stack to the new one, thereby reversing order
+        while(this.oldestItems.getSize() != 0) {
+            this.newestItems.add(this.oldestItems.pop());
+        }
+
         //Add the newest item
         this.newestItems.add(toAdd);
-
-        //Needs restructure because we added item
-        this.needsRestructure = true;
-
     }
 
-    private void restructure() { 
+    public Object pop() { 
+
         //Add items back to old stack, putting order in FIFO form
         while(this.newestItems.getSize() != 0) { 
-            this.oldestItems.add(this.newestItems.pop();
+            this.oldestItems.add(this.newestItems.pop());
         }
 
-        this.needsRestructure = false;
-    }
-
-    public Object pop() {
-        if(this.needsRestructure()) { 
-            restructure();
-        }
         return this.oldestItems.pop();
     }
-
-    public Object peek() { 
 
     public int size() { 
         return this.oldestItems.getSize() + this.newestItems.getSize();
