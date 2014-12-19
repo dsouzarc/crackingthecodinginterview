@@ -40,19 +40,22 @@ public class CustomLinkedList {
 
         //If there is no value for head
         if(this.head.value == null) {
-
             //Set the head's current value
             this.head.value = value;
-
-            //Set the next element to the last one
-            this.lastElement = new Node();
-            this.head.next = this.lastElement;
         }
 
         else { 
-            this.lastElement.value = value;
-            this.lastElement.next = new Node();
-            this.lastElement = this.lastElement.next;
+            if(this.lastElement == null) { 
+                this.lastElement = new Node(value);
+                this.lastElement.previous = this.head;
+                this.head.next = this.lastElement;
+            }
+            else { 
+                final Node newestVal = new Node(value);
+                this.lastElement.next = newestVal;
+                newestVal.previous = this.lastElement;
+                this.lastElement = this.lastElement.next;
+            }
         }
     }
 
@@ -95,16 +98,18 @@ public class CustomLinkedList {
 
         while(temp != null) { 
             if(temp.value != null) { 
-                if(temp.value.equals(other)) { 
+                if(temp.previous != null) { 
+                    System.out.println("PREV: " + temp.previous.value);
+                }
+                if(temp.value.equals(toRemove)) { 
                     //If this isn't the first element
                     if(temp.previous != null) { 
                         //Get the previous node and make its next item be the current next item
                         //thereby removing this element
-                        temp.previous.next = temp.next;
                     }
                     else { 
-                        temp = temp.next;
                     }
+                    this.size--;
                 }
             }
             temp = temp.next;
@@ -127,6 +132,8 @@ public class CustomLinkedList {
                 else { 
                     temp = temp.next;
                 }
+                
+                this.size--;
             }
             temp = temp.next;
         }
@@ -163,5 +170,17 @@ public class CustomLinkedList {
         }
 
         System.out.println("SIZE " + myList.size());
+
+        //Remove the 2nd item
+        myList.remove(ryan[1]);
+
+        System.out.println("after removing an element: " + myList.size());
+
+        head = myList.getHead();
+
+        while(head != null) { 
+            System.out.println("Stored Value\t" + head.value);
+            head = head.next;
+        }
     }
 }
