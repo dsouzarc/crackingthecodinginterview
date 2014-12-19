@@ -83,8 +83,53 @@ public class CustomLinkedList {
                     return true;
                 }
             }
+
+            temp = temp.next;
         }
         return false;
+    }
+
+    /** Remove an object */
+    public void remove(final Object toRemove) { 
+        Node temp = this.head;
+
+        while(temp != null) { 
+            if(temp.value != null) { 
+                if(temp.value.equals(other)) { 
+                    //If this isn't the first element
+                    if(temp.previous != null) { 
+                        //Get the previous node and make its next item be the current next item
+                        //thereby removing this element
+                        temp.previous.next = temp.next;
+                    }
+                    else { 
+                        temp = temp.next;
+                    }
+                }
+            }
+            temp = temp.next;
+        }
+    }
+
+    /** Remove the nth object */
+    public void remove(final int nth) { 
+        int counter = 0;
+        Node temp = this.head;
+
+        while(temp != null) { 
+            if(counter == nth) { 
+
+                //If this isn't the first element
+                if(temp.previous != null) { 
+                    //Remove this node
+                    temp.previous.next = temp.next;
+                }
+                else { 
+                    temp = temp.next;
+                }
+            }
+            temp = temp.next;
+        }
     }
     
     /** To String representation of each item in list*/
