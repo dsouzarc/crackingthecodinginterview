@@ -72,6 +72,20 @@ public class CustomLinkedList {
     public Node getLast() { 
         return this.lastElement;
     }
+
+    /** Contains an object */
+    public boolean contains(final Object other) { 
+        Node temp = this.head;
+
+        while(temp != null) { 
+            if(temp.value != null) { 
+                if(temp.value.equals(other)) { 
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     
     /** To String representation of each item in list*/
     public String toString() { 
