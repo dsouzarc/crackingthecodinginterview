@@ -94,46 +94,51 @@ public class CustomLinkedList {
 
     /** Remove an object */
     public void remove(final Object toRemove) { 
-        Node temp = this.head;
 
+        //If it's the first element
+        if(this.head.value.equals(toRemove)) { 
+            if(this.head.next != null) { 
+                //Replace
+                this.head.value = this.head.next.value;
+                this.head.next = this.head.next.next;
+
+                if(this.head.next != null) { 
+                    this.head.next.previous = null;
+                }
+                this.size--;
+            }
+            else { 
+                this.head.value = null;
+                this.head.next = null;
+                this.size--;
+            }
+
+            if(this.size == 0) { 
+                this.lastElement = null;
+            }
+            else if(this.size == 1) { 
+                this.head.next = this.lastElement;
+            }
+
+            return;
+        }
+
+        Node temp = this.head;
         while(temp != null) { 
             if(temp.value != null) { 
-                if(temp.previous != null) { 
-                    System.out.println("PREV: " + temp.previous.value);
-                }
                 if(temp.value.equals(toRemove)) { 
                     //If this isn't the first element
                     if(temp.previous != null) { 
                         //Get the previous node and make its next item be the current next item
                         //thereby removing this element
+                        temp.previous.next = temp.next;
+                        temp.next.previous = temp.previous;
+                        
+                        this.size--;
                     }
                     else { 
                     }
-                    this.size--;
                 }
-            }
-            temp = temp.next;
-        }
-    }
-
-    /** Remove the nth object */
-    public void remove(final int nth) { 
-        int counter = 0;
-        Node temp = this.head;
-
-        while(temp != null) { 
-            if(counter == nth) { 
-
-                //If this isn't the first element
-                if(temp.previous != null) { 
-                    //Remove this node
-                    temp.previous.next = temp.next;
-                }
-                else { 
-                    temp = temp.next;
-                }
-                
-                this.size--;
             }
             temp = temp.next;
         }
@@ -172,8 +177,11 @@ public class CustomLinkedList {
         System.out.println("SIZE " + myList.size());
 
         //Remove the 2nd item
+        myList.remove(ryan[0]);
         myList.remove(ryan[1]);
+        myList.remove(ryan[2]);
 
+        myList.add(ryan[0]);
         System.out.println("after removing an element: " + myList.size());
 
         head = myList.getHead();
