@@ -94,53 +94,53 @@ public class CustomLinkedList {
 
     /** Remove an object */
     public void remove(final Object toRemove) { 
+        Node current = this.head;
 
-        //If it's the first element
-        if(this.head.value.equals(toRemove)) { 
-            if(this.head.next != null) { 
-                //Replace
-                this.head.value = this.head.next.value;
-                this.head.next = this.head.next.next;
+        while(current.value != null && !current.value.equals(toRemove)) { 
+            current = current.next;
+        }
 
-                if(this.head.next != null) { 
-                    this.head.next.previous = null;
-                }
-                this.size--;
-            }
-            else { 
-                this.head.value = null;
-                this.head.next = null;
-                this.size--;
-            }
-
-            if(this.size == 0) { 
-                this.lastElement = null;
-            }
-            else if(this.size == 1) { 
-                this.head.next = this.lastElement;
-            }
-
+        //We went to the end and it's not there
+        if(current == null) { 
             return;
         }
 
-        Node temp = this.head;
-        while(temp != null) { 
-            if(temp.value != null) { 
-                if(temp.value.equals(toRemove)) { 
-                    //If this isn't the first element
-                    if(temp.previous != null) { 
-                        //Get the previous node and make its next item be the current next item
-                        //thereby removing this element
-                        temp.previous.next = temp.next;
-                        temp.next.previous = temp.previous;
-                        
-                        this.size--;
-                    }
-                    else { 
-                    }
-                }
+        //If it's the first element
+        if(current.equals(this.head)) { 
+            
+            //If there are no other elements
+            if(this.head.next == null) { 
+                this.head.value = null;
+                this.size--;
+                return;
             }
-            temp = temp.next;
+
+            //Only two elements, last becomes first
+            else if(this.head.next.equals(this.lastElement) || this.size == 2) { 
+                this.head.value = this.lastElement.value;
+                this.head.next = null;
+                this.lastElement = null;
+                this.size--;
+                return;
+            }
+
+            //More than two elements, first becomes second
+            else { 
+                this.head.value = this.head.next.value;
+                this.head.next = this.head.next.next;
+
+                if(this.head.next.next != null) { 
+                    this.head.next.next.previous = this.head;
+                }
+                this.size--;
+                return;
+            }
+        }
+
+        else { 
+            current.previous = current.next;
+            current.next.previous = current.previous;
+            this.size--;
         }
     }
     
