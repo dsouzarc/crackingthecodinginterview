@@ -26,6 +26,7 @@ public class CustomBinarySearchTree {
 
                 //Element is already there
                 if(compareStatus == 0) { 
+
                     //Replace its value
                     currentNode.value = value;
                     toContinue = false;
@@ -33,6 +34,7 @@ public class CustomBinarySearchTree {
 
                 //It's less than
                 else if(compareStatus < 0) { 
+                    
                     //If there are no smaller values
                     if(currentNode.leftChild == null) { 
                         currentNode.leftChild = new Node(key, value);
@@ -48,6 +50,7 @@ public class CustomBinarySearchTree {
 
                 //It's greater than
                 else {
+
                     //If there are no greater values
                     if(currentNode.rightChild == null) { 
                         currentNode.rightChild = new Node(key, value);
