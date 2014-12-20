@@ -110,6 +110,7 @@ public class CustomBinarySearchTree {
                 //If there is no smaller child, add it
                 if(currentNode.leftChild == null) { 
                     currentNode.leftChild = new Node(key, value);
+                    this.size++;
                     return;
                 }
 
@@ -125,6 +126,7 @@ public class CustomBinarySearchTree {
                 //If no bigger child, add it
                 if(currentNode.rightChild == null) { 
                     currentNode.rightChild = new Node(key, value);
+                    this.size++;
                     return;
                 }
 
@@ -134,8 +136,6 @@ public class CustomBinarySearchTree {
                 }
             }
         }
-
-        this.size++;
     }
 
     public int getSize() { 
@@ -150,9 +150,11 @@ public class CustomBinarySearchTree {
         }
 
         for(String r : ryan) { 
-            System.out.println(tree.contains(r));
+            System.out.println("Tree contains: " + r + "\t" + tree.contains(r));
         }
 
-        System.out.println(tree.contains("NOT A REAL ELEMENT"));
+        System.out.println("Tree contains: NOTAREALELEMENT: " + "\t" + tree.contains("NOT A REAL ELEMENT"));
+
+        System.out.println("TREE SIZE: " + tree.getSize());
     }
 }
