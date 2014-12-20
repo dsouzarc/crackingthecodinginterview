@@ -29,6 +29,39 @@ public class CustomBinarySearchTree {
         this.size = 0;
     }
 
+    public boolean contains(final Object key) { 
+        boolean toContinue = true;
+        Node currentNode = this.root;
+
+        while(toContinue) { 
+            final int compareToValue = key.toString().compareTo(currentNode.key.toString());
+
+            if(compareToValue == 0) { 
+                return true;
+            }
+
+            //Smaller, left side
+            else if(compareToValue < 0) { 
+                if(currentNode.leftChild == null) { 
+                    return false;
+                }
+                else {
+                    currentNode = currentNode.leftChild;
+                }
+            }
+            else { 
+                if(currentNode.rightChild == null) { 
+                    return false;
+                }
+                else { 
+                    currentNode = currentNode.rightChild;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public void add(final Object key, final Object value) { 
 
         //If it's the first element
@@ -85,5 +118,11 @@ public class CustomBinarySearchTree {
         for(String r : ryan) { 
             tree.add(r, r);
         }
+
+        for(String r : ryan) { 
+            System.out.println(tree.contains(r));
+        }
+
+        System.out.println(tree.contains("NOT A REAL ELEMENT"));
     }
 }
