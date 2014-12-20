@@ -67,6 +67,40 @@ public class CustomBinarySearchTree {
         }
     }
 
+    public boolean contains(final Object key) { 
+        Node currentNode = this.head;
+        boolean toContinue = true;
+
+        while(toContinue) {
+            final int compareTo = currentNode.key.toString().compareTo(key.toString());
+
+            if(compareTo == 0) { 
+                return true;
+            }
+            else if(compareTo < 0) { 
+                if(currentNode.leftChild == null) { 
+                    return false;
+                }
+                else { 
+                    currentNode = currentNode.leftChild;
+                }
+            }
+            else { 
+                if(currentNode.rightChild == null) { 
+                    return false;
+                }
+                else { 
+                    currentNode = currentNode.rightChild;
+                }
+            }
+
+            if(currentNode = null || currentNode.key == null || (currentNode.leftChild == null && currentNode.rightChild == null)) { 
+                toContinue = false;
+                return;
+            }
+        }
+    }
+
     /** A different type of node */
     public static class Node { 
         public Node leftChild, rightChild;
