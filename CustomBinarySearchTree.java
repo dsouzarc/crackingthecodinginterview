@@ -141,6 +141,16 @@ public class CustomBinarySearchTree {
             }
         }*/
     }
+
+    public static void main(String[] ryan) { 
+        final CustomBinarySearchTree tree = new CustomBinarySearchTree();
+
+        for(String r : ryan) { 
+            tree.add(r);
+        }
+
+        for(String r : ryan) { 
+            System.out.println(tree.contains(r));
+        }
+    }
 }
-
-
