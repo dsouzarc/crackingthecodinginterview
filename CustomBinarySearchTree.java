@@ -4,7 +4,7 @@
 
 public class CustomBinarySearchTree { 
     private final Node root;
-    private int size;
+    private int size, leftSize, rightSize;
 
     /** Represents each node in the tree */
     public static class Node { 
@@ -29,6 +29,8 @@ public class CustomBinarySearchTree {
     public CustomBinarySearchTree() { 
         this.root = new Node();
         this.size = 0;
+        this.leftSize = 0;
+        this.rightSize = 0;
     }
     
     /** Returns true if it contains the element */
@@ -111,6 +113,7 @@ public class CustomBinarySearchTree {
                 if(currentNode.leftChild == null) { 
                     currentNode.leftChild = new Node(key, value);
                     this.size++;
+                    this.leftSize++;
                     return;
                 }
 
@@ -127,6 +130,7 @@ public class CustomBinarySearchTree {
                 if(currentNode.rightChild == null) { 
                     currentNode.rightChild = new Node(key, value);
                     this.size++;
+                    this.rightSize++;
                     return;
                 }
 
@@ -138,7 +142,19 @@ public class CustomBinarySearchTree {
         }
     }
 
+    /** Size/height of tree */
     public int getSize() { 
+
+        //If each side is the same height
+        if(this.leftSize == this.rightSize) { 
+            return this.leftSize;
+        }
+
+        //Return the taller side's size
+        return this.leftSize < this.rightSize ? this.rightSize : this.leftSize;
+    }
+
+    public int getNumElements() { 
         return this.size;
     }
 
