@@ -159,6 +159,16 @@ public class CustomBinarySearchTree {
         return this.size;
     }
 
+    public Object getLargestElement() { 
+        Node toLargest = this.root;
+
+        while(toLargest.rightChild != null) { 
+            toLargest = toLargest.rightChild;
+        }
+
+        return toLargest.value;
+    }
+
     public Object getSmallestElement() { 
         Node toSmallest = this.root;
 
@@ -185,5 +195,6 @@ public class CustomBinarySearchTree {
         System.out.println("TREE SIZE: " + tree.getNumElements());
 
         System.out.println("Smallest: " + tree.getSmallestElement());
+        System.out.println("Largest: " + tree.getLargestElement());
     }
 }
