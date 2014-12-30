@@ -179,6 +179,22 @@ public class CustomBinarySearchTree {
         return toSmallest.value;
     }
 
+    public void printInOrder() { 
+        printInOrder(this.root);
+        System.out.println();
+    }
+
+    private void printInOrder(final Node node) { 
+        if(node == null) { 
+            return;
+        }
+
+        //Check and print left child
+        printInOrder(node.leftChild);
+        System.out.print(node.value + "\t");
+        printInOrder(node.rightChild);
+    }
+
     public static void main(String[] ryan) { 
         final CustomBinarySearchTree tree = new CustomBinarySearchTree();
 
@@ -196,5 +212,7 @@ public class CustomBinarySearchTree {
 
         System.out.println("Smallest: " + tree.getSmallestElement());
         System.out.println("Largest: " + tree.getLargestElement());
+        System.out.println("In Order from bottom of tree: \n");
+        tree.printInOrder();
     }
 }
