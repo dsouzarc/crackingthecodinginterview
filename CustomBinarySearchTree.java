@@ -114,6 +114,7 @@ public class CustomBinarySearchTree {
                     currentNode.leftChild = new Node(key, value);
                     this.size++;
                     this.leftSize++;
+                    System.out.println(key + "\t" + this.leftSize);
                     return;
                 }
 
@@ -158,6 +159,16 @@ public class CustomBinarySearchTree {
         return this.size;
     }
 
+    public Object getSmallestElement() { 
+        Node toSmallest = this.root;
+
+        while(toSmallest.leftChild != null) {
+            toSmallest = toSmallest.leftChild;
+        }
+
+        return toSmallest.value;
+    }
+
     public static void main(String[] ryan) { 
         final CustomBinarySearchTree tree = new CustomBinarySearchTree();
 
@@ -171,6 +182,8 @@ public class CustomBinarySearchTree {
 
         System.out.println("Tree contains: NOTAREALELEMENT: " + "\t" + tree.contains("NOT A REAL ELEMENT"));
 
-        System.out.println("TREE SIZE: " + tree.getSize());
+        System.out.println("TREE SIZE: " + tree.getNumElements());
+
+        System.out.println("Smallest: " + tree.getSmallestElement());
     }
 }
