@@ -179,12 +179,14 @@ public class CustomBinarySearchTree {
         return toSmallest.value;
     }
 
+    //Go to bottom of left, print value, go up a level, print right value
+    //Essentially printing all values in numeric order
     public void printInOrder() { 
         printInOrder(this.root);
         System.out.println();
     }
 
-    private void printInOrder(final Node node) { 
+    private static void printInOrder(final Node node) { 
         if(node == null) { 
             return;
         }
@@ -194,6 +196,24 @@ public class CustomBinarySearchTree {
         System.out.print(node.value + "\t");
         printInOrder(node.rightChild);
     }
+
+    //Value at the given node is printed first, then left, then right
+    public void printPreOrder() { 
+        printPreOrder(this.root);
+        System.out.println();
+    }
+
+    private static void printPreOrder(final Node node) { 
+        if(node == null) { 
+            return;
+        }
+
+        System.out.print(node.value + "\t");
+        printPreOrder(node.leftChild);
+        printPreOrder(node.rightChild);
+    }
+
+
 
     public static void main(String[] ryan) { 
         final CustomBinarySearchTree tree = new CustomBinarySearchTree();
