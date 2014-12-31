@@ -213,7 +213,20 @@ public class CustomBinarySearchTree {
         printPreOrder(node.rightChild);
     }
 
+    //Left, then right, then value
+    public void printPostOrder() { 
+        printPostOrder(this.root);
+        System.out.println();
+    }
 
+    private static void printPostOrder(final Node node) { 
+        if(node == null) { 
+            return;
+        }
+        printPreOrder(node.leftChild);
+        printPreOrder(node.rightChild);
+        System.out.print(node.value + "\t");
+    }
 
     public static void main(String[] ryan) { 
         final CustomBinarySearchTree tree = new CustomBinarySearchTree();
