@@ -46,6 +46,10 @@ public class CustomQueue {
         return this.size;
     }
 
+    public boolean isEmpty() { 
+        return this.size == 0;
+    }
+
     public static void main(String[] ryan) { 
         final CustomQueue vals = new CustomQueue();
 
