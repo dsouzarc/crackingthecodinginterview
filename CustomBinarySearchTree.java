@@ -233,20 +233,28 @@ public class CustomBinarySearchTree {
 
     //Breadth first search
     public void breadthFirstSearch() { 
+
+        //To hold nodes that have been visited but we need to revisit to print children's valus
         final CustomQueue queue = new CustomQueue();
 
+        //Start off with the tree's root
         queue.add(this.root);
 
+        //While we still have elements to visit
         while(!queue.isEmpty()) { 
 
+            //Get the first entered node
             final Node node = (Node) queue.dequeue();
 
+            //Print its value
             System.out.println(node.value);
 
+            //And, if it has a left child, add it left child
             if(node.leftChild != null) { 
                 queue.add(node.leftChild);
             }
 
+            //If it has a right child, add it
             if(node.rightChild != null) { 
                 queue.add(node.rightChild);
             }
