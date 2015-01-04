@@ -232,16 +232,26 @@ public class CustomBinarySearchTree {
     }
 
     //Breadth first search
-    public static void breadthFirstSearch() { 
-        breadthFirstPrint(this.root);
-    }
+    public void breadthFirstSearch() { 
+        final CustomQueue queue = new CustomQueue();
 
-    private static void breadthFirstPrint(final Node node) { 
-        if(node == null) { 
-            return;
+        queue.add(this.root);
+
+        while(!queue.isEmpty()) { 
+
+            final Node node = (Node) queue.dequeue();
+
+            System.out.println(node.value);
+
+            if(node.leftChild != null) { 
+                queue.add(node.leftChild);
+            }
+
+            if(node.rightChild != null) { 
+                queue.add(node.rightChild);
+            }
         }
     }
-
 
     public static void main(String[] ryan) { 
         final CustomBinarySearchTree tree = new CustomBinarySearchTree();
@@ -262,5 +272,8 @@ public class CustomBinarySearchTree {
         System.out.println("Largest: " + tree.getLargestElement());
         System.out.println("In Order from bottom of tree: \n");
         tree.printInOrder();
+
+        System.out.println("\n\nBreadth First: ");
+        tree.breadthFirstSearch();
     }
 }
