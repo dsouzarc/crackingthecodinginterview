@@ -181,6 +181,7 @@ public class CustomBinarySearchTree {
 
     //Go to bottom of left, print value, go up a level, print right value
     //Essentially printing all values in numeric order
+    //#DepthFirstSearch
     public void printInOrder() { 
         printInOrder(this.root);
         System.out.println();
@@ -198,6 +199,7 @@ public class CustomBinarySearchTree {
     }
 
     //Value at the given node is printed first, then left, then right
+    //#DepthFirstSearch
     public void printPreOrder() { 
         printPreOrder(this.root);
         System.out.println();
@@ -214,6 +216,7 @@ public class CustomBinarySearchTree {
     }
 
     //Left, then right, then value
+    //#DepthFirstSearch
     public void printPostOrder() { 
         printPostOrder(this.root);
         System.out.println();
@@ -226,17 +229,6 @@ public class CustomBinarySearchTree {
         printPreOrder(node.leftChild);
         printPreOrder(node.rightChild);
         System.out.print(node.value + "\t");
-    }
-
-    //Depth first search 
-    public static void depthFirstPrint() { 
-        depthFirstPrint(this.root);
-    }
-
-    private static void depthFirstPrint(final Node node) { 
-        if(node == null) { 
-            return;
-        }
     }
 
     //Breadth first search
