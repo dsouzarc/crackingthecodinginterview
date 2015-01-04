@@ -228,6 +228,29 @@ public class CustomBinarySearchTree {
         System.out.print(node.value + "\t");
     }
 
+    //Depth first search 
+    public static void depthFirstPrint() { 
+        depthFirstPrint(this.root);
+    }
+
+    private static void depthFirstPrint(final Node node) { 
+        if(node == null) { 
+            return;
+        }
+    }
+
+    //Breadth first search
+    public static void breadthFirstSearch() { 
+        breadthFirstPrint(this.root);
+    }
+
+    private static void breadthFirstPrint(final Node node) { 
+        if(node == null) { 
+            return;
+        }
+    }
+
+
     public static void main(String[] ryan) { 
         final CustomBinarySearchTree tree = new CustomBinarySearchTree();
 
